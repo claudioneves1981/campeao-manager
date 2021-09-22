@@ -1,0 +1,30 @@
+<h2>Lista de Campeões</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Afinidade Força</th>
+        <th>Força Fisica</th>
+        <th>HP</th>
+        <th>Habilidade Com Sabre</th>
+        <th>Mental</th>
+        <th>Previsao</th>
+        <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let campeao of campeoes">
+            <td>{{campeao.nome}}</td>
+            <td>{{campeao.tipo}}</td>
+            <td><app-star [rating]="campeao.afinidadeForca"></app-star></td>
+            <td><app-star [rating]="campeao.forcaFisica"></app-star></td>
+            <td>{{campeao.hp}}</td>
+            <td><app-star [rating]="campeao.habilidadeComSabre"></app-star></td>
+            <td><app-star [rating]="campeao.mental"></app-star></td>
+            <td><app-star [rating]="campeao.previsao"></app-star></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
