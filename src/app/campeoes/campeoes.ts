@@ -1,4 +1,5 @@
 export class Campeao{
+    id!: number;
     nome!: string;
     email!: string;
     corSabre!: string;

@@ -1,8 +1,19 @@
 <h2>Lista de Campeões</h2>
 
+<div class="form-group row">
+
+    <label class="col-sm-2 col-form-label">Fitrar Por</label>
+
+    <div class="col-sm-10">
+        <input [(ngModel)]="filter" class="form-control">
+    </div>
+
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>
+        <th>Id</th>
         <th>Nome</th>
         <th>Tipo</th>
         <th>Afinidade Força</th>
@@ -15,7 +26,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let campeao of campeoes">
+        <tr *ngFor="let campeao of filteredCampeoes">
+            <td>{{campeao.id}}</td>
             <td>{{campeao.nome}}</td>
             <td>{{campeao.tipo}}</td>
             <td><app-star [rating]="campeao.afinidadeForca"></app-star></td>
@@ -24,7 +36,9 @@
             <td><app-star [rating]="campeao.habilidadeComSabre"></app-star></td>
             <td><app-star [rating]="campeao.mental"></app-star></td>
             <td><app-star [rating]="campeao.previsao"></app-star></td>
-            <td></td>
+             <td>
+                 <a [routerLink]="['/campeoes/info', campeao.id]" class="btn btn-primary">Edit</a>
+             </td>
         </tr>
     </tbody>
 </table>
