@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { from, Observable } from "rxjs";
 import { Campeao } from "./campeoes";
 
 @Injectable({
@@ -6,11 +8,15 @@ import { Campeao } from "./campeoes";
 })
 export class CampeaoService {
 
-    retrieveAll(): Campeao[] {
-        return CAMPEOES;
+    private campeaoUrl: string = "http://localhost:4200/api/campeao";
+
+    constructor(private httpClient: HttpClient){}
+
+    retrieveAll(): Observable<Campeao[]>{
+        return this.httpClient.get<Campeao[]>(`${this.campeaoUrl}/listar`);
     }
 
-    retrieveById(id: number): Campeao {
+   retrieveById(id: number): Campeao {
         return CAMPEOES.find((campeaoIterator: Campeao) => campeaoIterator.id === id)!;
     }
 
@@ -29,7 +35,7 @@ var CAMPEOES: Campeao[] = [
         nome: 'Claudio',
         email: 'claudio.neves@etec.sp.gov.br',
         corSabre: 'azul',
-        tipo: 'jedi',
+        tipo: true,
         afinidadeForca: 5,
         forcaFisica: 5,
         hp: 150,
@@ -42,7 +48,7 @@ var CAMPEOES: Campeao[] = [
         nome: 'João',
         email: 'cfneguacu@hotmal.com.br',
         corSabre: 'vermelha',
-        tipo: 'sith',
+        tipo: false,
         afinidadeForca: 5,
         forcaFisica: 10,
         hp: 150,

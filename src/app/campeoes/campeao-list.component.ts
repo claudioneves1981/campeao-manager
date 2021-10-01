@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { from, Observable } from "rxjs";
 import { CampeaoService } from "./campeao.service";
 import { Campeao } from "./campeoes";
 
@@ -8,7 +9,7 @@ import { Campeao } from "./campeoes";
 })
 export class CampeaoListComponent implements OnInit{
 
-    filteredCampeoes: Campeao[] = [];
+    filteredCampeoes: Campeao [] = [];
 
     _campeoes: Campeao[] = [];
 
@@ -17,11 +18,20 @@ export class CampeaoListComponent implements OnInit{
     constructor(private campeaoService: CampeaoService){ }
 
     ngOnInit(): void{
-        this._campeoes = this.campeaoService.retrieveAll();
-        this.filteredCampeoes = this._campeoes;
-    }
+        this.retrieveAll();
+     }
+ 
+     retrieveAll(): void {
+         this.campeaoService.retrieveAll().subscribe({
+             next: campeoes =>{
+                 this._campeoes = campeoes;
+                 this.filteredCampeoes = this._campeoes;
+             },
+             error: err => console.log('Error', err)
+         })
+     }
 
-    set filter(value: string){
+   set filter(value: string){
         this._filterBy = value;
         this.filteredCampeoes = this._campeoes.filter((campeao: Campeao)=> campeao.nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) > -1);
     }

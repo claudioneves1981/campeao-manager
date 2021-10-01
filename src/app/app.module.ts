@@ -8,6 +8,7 @@ import { Error404Component } from './error-404/erro-404.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 import { CampeaoInfoComponent } from './campeoes/campeao-info.component';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,15 +22,16 @@ import { CampeaoInfoComponent } from './campeoes/campeao-info.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
-        path: 'campeoes', component: CampeaoListComponent
+        path: 'campeao', component: CampeaoListComponent
       },
       {
-        path: 'campeoes/info/:id', component: CampeaoInfoComponent
+        path: 'campeao/info/:id', component: CampeaoInfoComponent
       },
       {
-        path: '',redirectTo: 'campeoes', pathMatch: 'full'
+        path: '',redirectTo: 'campeao', pathMatch: 'full'
       },
       {
         path: '**', component: Error404Component

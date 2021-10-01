@@ -3,7 +3,7 @@ export class Campeao{
     nome!: string;
     email!: string;
     corSabre!: string;
-    tipo!: string;
+    tipo!: boolean;
     afinidadeForca!: number;
     forcaFisica!: number;
     hp!: number;
