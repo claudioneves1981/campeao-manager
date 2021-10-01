@@ -14,8 +14,11 @@ export class CampeaoInfoComponent implements OnInit{
 
     ngOnInit(): void {
 
-        const id = +this.activatedRoute.snapshot.paramMap.get('id')!;
-       // this.campeao = this.campeaoService.retrieveById(id);
+    this.campeaoService.retrieveById(+this.activatedRoute.snapshot.paramMap.get('id')!).subscribe({
+        next: campeao => this.campeao = campeao,
+        error: err => console.log('Error', err)
+    });
+    
     }
 
     save(): void{

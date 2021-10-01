@@ -16,8 +16,8 @@ export class CampeaoService {
         return this.httpClient.get<Campeao[]>(`${this.campeaoUrl}/listar`);
     }
 
-   retrieveById(id: number): Campeao {
-        return CAMPEOES.find((campeaoIterator: Campeao) => campeaoIterator.id === id)!;
+   retrieveById(id: number): Observable<Campeao> {
+       return this.httpClient.get<Campeao>(`${this.campeaoUrl}/${id}`)
     }
 
     save(campeao: Campeao): void{
