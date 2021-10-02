@@ -13,6 +13,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+        <th>ID</th>
         <th>Nome</th>
         <th>Email</th>
         <th>Cor do Sabre</th>
@@ -22,6 +23,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let campeao of filteredCampeoes">
+            <td>{{campeao.id}}</td>
             <td>{{campeao.nome}}</td>
             <td>{{campeao.email}}</td>
             <td>{{campeao.corSabre}}</td>

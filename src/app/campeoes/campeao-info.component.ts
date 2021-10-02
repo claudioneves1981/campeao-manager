@@ -3,12 +3,14 @@ import { ActivatedRoute } from "@angular/router";
 import { CampeaoService } from "./campeao.service";
 import { Campeao } from "./campeoes";
 
+
 @Component({
     templateUrl:'./campeao-info.component.html'
 })
 export class CampeaoInfoComponent implements OnInit{
 
    campeao!: Campeao; 
+  // id!: bigint;
 
     constructor(private activatedRoute: ActivatedRoute, private campeaoService: CampeaoService){}
 

@@ -20,16 +20,16 @@ export class CampeaoService {
        return this.httpClient.get<Campeao>(`${this.campeaoUrl}/${id}`)
     }
 
-    save(campeao: Campeao): void{
+    /* save(campeao: Campeao): void{
         if(campeao.id){
             const index = CAMPEOES.findIndex((campeaoIterator: Campeao)=> campeaoIterator.id === campeao.id);
             CAMPEOES[index] = campeao;
         }
     }
 
-}
+}*/
 
-var CAMPEOES: Campeao[] = [
+/* var CAMPEOES: Campeao[] = [
     {
         id: 1,
         nome: 'Claudio',
@@ -56,4 +56,5 @@ var CAMPEOES: Campeao[] = [
         mental: 5,
         previsao: 5,
     }
-];
+]; */
+}
